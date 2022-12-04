@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+{% block title %}Lista de Produtos{% endblock %}
+
+{% block content %}
+<h1>Produtos</h1>
+<div class="container"> 
+    <table class="table"> 
+        <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Nome</th>
+                <th scope="col">Preço</th>
+                <th scope="col">Descrição</th>
+            </tr>
+        </thead> 
+        <tbody>
+            {% for product in page_obj %}
+            <tr>
+                <th scope="row">{{ product.id }}</th>
+                <th scope="row">{{ product.name|upper }}</th>
+                <th scope="row">{{ product.price }}</th>
+                <th scope="row">{{ product.description }}</th>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table> 
+    {% include 'pagination.html' %} 
+</div> 
+{% endblock %}
