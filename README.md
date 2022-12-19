@@ -5,7 +5,7 @@ Documentação Oficial do Django [Link](https://docs.djangoproject.com/en/4.1/re
 Vídeo Tutorial [Link](https://www.youtube.com/watch?v=kcXPT06LnLQ)
 
  *myapp/models.py*
-``` 
+``` python
 from django.db import models
 
 # Create your models here.
@@ -19,7 +19,7 @@ class Product(models.Model):
  ``` 
  
  *myapp/admin.py*
-```
+```python
 from django.contrib import admin
 
 from myapp.models import Product
@@ -29,7 +29,7 @@ admin.site.register(Product)
 ```
 
 Rodar
-```
+```python
 python manage.py makemigrations
 python manage.py migrate
 python manage.py createsuperuser # para criar um usuario administrador para acessar django admin
@@ -38,7 +38,7 @@ python manage.py createsuperuser # para criar um usuario administrador para aces
 ---
 
 Vamos criar nossa view para listar os produtos.
-```
+```python
 from django.core.paginator import Paginator
 from django.shortcuts import render
 from myapp.models import Product
@@ -63,7 +63,7 @@ urlpatterns = [
 
 Criar um template para listar os produtos que cadastramos.
 *myapp/templates/list.html*
-```
+```html
 {% extends 'base.html' %}
 {% block title %}index 1{% endblock %}
 {% block content %}
@@ -94,8 +94,8 @@ Criar um template para listar os produtos que cadastramos.
 {% endblock %}
 ```
 
-*myapp/templates/pagination.py*
-```
+*myapp/templates/pagination.html*
+```html
 {% if page_obj.has_other_pages %}
 <div class="btn-group" role="group" aria-label="Item pagination">
     {% if page_obj.has_previous %}
