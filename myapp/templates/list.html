@@ -5,6 +5,21 @@
 {% block content %}
 <h1>Produtos</h1>
 <div class="container"> 
+
+    <form class="d-flex gap-3 mt-2" action="{% url 'product-list' %}" method="GET">          
+    
+        <span class="fw-bold">Pesquisar: </span>   
+
+        <input name="obj" type="text" value="{{request.GET.obj}}" class="form-control" placeholder="pesquisar pelo nome do produto..."> 
+    
+        {% if request.GET.obj %}   
+        <a class="btn btn-primary" href="{% url 'product-list' %}">Reset</a>                 
+        {% endif %}  
+    
+        <button type="submit" class="btn btn-primary">Buscar</button> 
+    
+    </form> 
+
     <table class="table"> 
         <thead>
             <tr>
